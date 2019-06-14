@@ -62,6 +62,10 @@
 		78D11DC6757D4AC2AB627BD9 /* libRNVectorIcons-tvOS.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 3868AFDC79C540D29F316420 /* libRNVectorIcons-tvOS.a */; };
 		153DFF1B643E499D8FEC04BF /* libReactNativeNavigation.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 6FF41379FEA94E469A77359F /* libReactNativeNavigation.a */; };
 		9AC0F5BAFA914A3287026811 /* ReactNativeNavigationTests.xctest in Resources */ = {isa = PBXBuildFile; fileRef = CAE0AEAD411F4D85B6F35624 /* ReactNativeNavigationTests.xctest */; };
+		5A81A1F68B5040FEB9C27430 /* libRNSnackbar.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 797EDDAA52DC49D492D0B593 /* libRNSnackbar.a */; };
+		C2D7DBAB8BBC4EDA9F463B99 /* libFastImage.a in Frameworks */ = {isa = PBXBuildFile; fileRef = B5E7E3CAD720433F9E2A39D4 /* libFastImage.a */; };
+		73618412C7AD4159BB864834 /* libBVLinearGradient.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 9762B164EF454CE4B86CBE2F /* libBVLinearGradient.a */; };
+		463EA89A201F4B1CA99AE321 /* libRNReanimated.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 1EA7A1E2A13D40B48021AB00 /* libRNReanimated.a */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -396,6 +400,14 @@
 		80A89D804EEE463FA28CD61A /* ReactNativeNavigation.xcodeproj */ = {isa = PBXFileReference; name = "ReactNativeNavigation.xcodeproj"; path = "../node_modules/react-native-navigation/lib/ios/ReactNativeNavigation.xcodeproj"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = wrapper.pb-project; explicitFileType = undefined; includeInIndex = 0; };
 		6FF41379FEA94E469A77359F /* libReactNativeNavigation.a */ = {isa = PBXFileReference; name = "libReactNativeNavigation.a"; path = "libReactNativeNavigation.a"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = archive.ar; explicitFileType = undefined; includeInIndex = 0; };
 		CAE0AEAD411F4D85B6F35624 /* ReactNativeNavigationTests.xctest */ = {isa = PBXFileReference; name = "ReactNativeNavigationTests.xctest"; path = "ReactNativeNavigationTests.xctest"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = wrapper.cfbundle; explicitFileType = undefined; includeInIndex = 0; };
+		62328B961BC347D28A382D01 /* RNSnackbar.xcodeproj */ = {isa = PBXFileReference; name = "RNSnackbar.xcodeproj"; path = "../node_modules/react-native-snackbar/ios/RNSnackbar.xcodeproj"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = wrapper.pb-project; explicitFileType = undefined; includeInIndex = 0; };
+		797EDDAA52DC49D492D0B593 /* libRNSnackbar.a */ = {isa = PBXFileReference; name = "libRNSnackbar.a"; path = "libRNSnackbar.a"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = archive.ar; explicitFileType = undefined; includeInIndex = 0; };
+		7331797A452343CFAFF32F61 /* FastImage.xcodeproj */ = {isa = PBXFileReference; name = "FastImage.xcodeproj"; path = "../node_modules/react-native-fast-image/ios/FastImage.xcodeproj"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = wrapper.pb-project; explicitFileType = undefined; includeInIndex = 0; };
+		B5E7E3CAD720433F9E2A39D4 /* libFastImage.a */ = {isa = PBXFileReference; name = "libFastImage.a"; path = "libFastImage.a"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = archive.ar; explicitFileType = undefined; includeInIndex = 0; };
+		18EFEA6D980E47DAA04CABD9 /* BVLinearGradient.xcodeproj */ = {isa = PBXFileReference; name = "BVLinearGradient.xcodeproj"; path = "../node_modules/react-native-linear-gradient/BVLinearGradient.xcodeproj"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = wrapper.pb-project; explicitFileType = undefined; includeInIndex = 0; };
+		9762B164EF454CE4B86CBE2F /* libBVLinearGradient.a */ = {isa = PBXFileReference; name = "libBVLinearGradient.a"; path = "libBVLinearGradient.a"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = archive.ar; explicitFileType = undefined; includeInIndex = 0; };
+		FC1C89B875634F78BA61A133 /* RNReanimated.xcodeproj */ = {isa = PBXFileReference; name = "RNReanimated.xcodeproj"; path = "../node_modules/react-native-reanimated/ios/RNReanimated.xcodeproj"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = wrapper.pb-project; explicitFileType = undefined; includeInIndex = 0; };
+		1EA7A1E2A13D40B48021AB00 /* libRNReanimated.a */ = {isa = PBXFileReference; name = "libRNReanimated.a"; path = "libRNReanimated.a"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = archive.ar; explicitFileType = undefined; includeInIndex = 0; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -429,6 +441,10 @@
 				E73061CCF3DC4C20B465C06F /* libRNVectorIcons.a in Frameworks */,
 				153DFF1B643E499D8FEC04BF /* libReactNativeNavigation.a in Frameworks */,
 				9AC0F5BAFA914A3287026811 /* ReactNativeNavigationTests.xctest in Resources */,
+				5A81A1F68B5040FEB9C27430 /* libRNSnackbar.a in Frameworks */,
+				C2D7DBAB8BBC4EDA9F463B99 /* libFastImage.a in Frameworks */,
+				73618412C7AD4159BB864834 /* libBVLinearGradient.a in Frameworks */,
+				463EA89A201F4B1CA99AE321 /* libRNReanimated.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -625,6 +641,10 @@
 				A74ED377A1194F8894EE12D0 /* RNI18n.xcodeproj */,
 				669A34B5EA9344C38F76E791 /* RNVectorIcons.xcodeproj */,
 				80A89D804EEE463FA28CD61A /* ReactNativeNavigation.xcodeproj */,
+				62328B961BC347D28A382D01 /* RNSnackbar.xcodeproj */,
+				7331797A452343CFAFF32F61 /* FastImage.xcodeproj */,
+				18EFEA6D980E47DAA04CABD9 /* BVLinearGradient.xcodeproj */,
+				FC1C89B875634F78BA61A133 /* RNReanimated.xcodeproj */,
 			);
 			name = Libraries;
 			sourceTree = "<group>";
@@ -1299,6 +1319,10 @@
 					"\"$(SRCROOT)/$(TARGET_NAME)\"",
 					"\"$(SRCROOT)/$(TARGET_NAME)\"",
 					"\"$(SRCROOT)/$(TARGET_NAME)\"",
+					"\"$(SRCROOT)/$(TARGET_NAME)\"",
+					"\"$(SRCROOT)/$(TARGET_NAME)\"",
+					"\"$(SRCROOT)/$(TARGET_NAME)\"",
+					"\"$(SRCROOT)/$(TARGET_NAME)\"",
 				);
 				HEADER_SEARCH_PATHS = (
 					"$(inherited)",
@@ -1306,6 +1330,10 @@
 					"$(SRCROOT)\..\node_modules\react-native-i18n\ios",
 					"$(SRCROOT)\..\node_modules\react-native-vector-icons\RNVectorIconsManager",
 					"$(SRCROOT)\..\node_modules\react-native-navigation\lib\ios/**",
+					"$(SRCROOT)\..\node_modules\react-native-snackbar\ios",
+					"$(SRCROOT)\..\node_modules\react-native-fast-image\ios\FastImage/**",
+					"$(SRCROOT)\..\node_modules\react-native-linear-gradient\BVLinearGradient",
+					"$(SRCROOT)\..\node_modules\react-native-reanimated\ios/**",
 				);
 			};
 			name = Debug;
@@ -1335,6 +1363,10 @@
 					"\"$(SRCROOT)/$(TARGET_NAME)\"",
 					"\"$(SRCROOT)/$(TARGET_NAME)\"",
 					"\"$(SRCROOT)/$(TARGET_NAME)\"",
+					"\"$(SRCROOT)/$(TARGET_NAME)\"",
+					"\"$(SRCROOT)/$(TARGET_NAME)\"",
+					"\"$(SRCROOT)/$(TARGET_NAME)\"",
+					"\"$(SRCROOT)/$(TARGET_NAME)\"",
 				);
 				HEADER_SEARCH_PATHS = (
 					"$(inherited)",
@@ -1342,6 +1374,10 @@
 					"$(SRCROOT)\..\node_modules\react-native-i18n\ios",
 					"$(SRCROOT)\..\node_modules\react-native-vector-icons\RNVectorIconsManager",
 					"$(SRCROOT)\..\node_modules\react-native-navigation\lib\ios/**",
+					"$(SRCROOT)\..\node_modules\react-native-snackbar\ios",
+					"$(SRCROOT)\..\node_modules\react-native-fast-image\ios\FastImage/**",
+					"$(SRCROOT)\..\node_modules\react-native-linear-gradient\BVLinearGradient",
+					"$(SRCROOT)\..\node_modules\react-native-reanimated\ios/**",
 				);
 			};
 			name = Release;
@@ -1368,6 +1404,10 @@
 					"$(SRCROOT)\..\node_modules\react-native-i18n\ios",
 					"$(SRCROOT)\..\node_modules\react-native-vector-icons\RNVectorIconsManager",
 					"$(SRCROOT)\..\node_modules\react-native-navigation\lib\ios/**",
+					"$(SRCROOT)\..\node_modules\react-native-snackbar\ios",
+					"$(SRCROOT)\..\node_modules\react-native-fast-image\ios\FastImage/**",
+					"$(SRCROOT)\..\node_modules\react-native-linear-gradient\BVLinearGradient",
+					"$(SRCROOT)\..\node_modules\react-native-reanimated\ios/**",
 				);
 			};
 			name = Debug;
@@ -1393,6 +1433,10 @@
 					"$(SRCROOT)\..\node_modules\react-native-i18n\ios",
 					"$(SRCROOT)\..\node_modules\react-native-vector-icons\RNVectorIconsManager",
 					"$(SRCROOT)\..\node_modules\react-native-navigation\lib\ios/**",
+					"$(SRCROOT)\..\node_modules\react-native-snackbar\ios",
+					"$(SRCROOT)\..\node_modules\react-native-fast-image\ios\FastImage/**",
+					"$(SRCROOT)\..\node_modules\react-native-linear-gradient\BVLinearGradient",
+					"$(SRCROOT)\..\node_modules\react-native-reanimated\ios/**",
 				);
 			};
 			name = Release;
@@ -1430,6 +1474,10 @@
 					"\"$(SRCROOT)/$(TARGET_NAME)\"",
 					"\"$(SRCROOT)/$(TARGET_NAME)\"",
 					"\"$(SRCROOT)/$(TARGET_NAME)\"",
+					"\"$(SRCROOT)/$(TARGET_NAME)\"",
+					"\"$(SRCROOT)/$(TARGET_NAME)\"",
+					"\"$(SRCROOT)/$(TARGET_NAME)\"",
+					"\"$(SRCROOT)/$(TARGET_NAME)\"",
 				);
 				HEADER_SEARCH_PATHS = (
 					"$(inherited)",
@@ -1437,6 +1485,10 @@
 					"$(SRCROOT)\..\node_modules\react-native-i18n\ios",
 					"$(SRCROOT)\..\node_modules\react-native-vector-icons\RNVectorIconsManager",
 					"$(SRCROOT)\..\node_modules\react-native-navigation\lib\ios/**",
+					"$(SRCROOT)\..\node_modules\react-native-snackbar\ios",
+					"$(SRCROOT)\..\node_modules\react-native-fast-image\ios\FastImage/**",
+					"$(SRCROOT)\..\node_modules\react-native-linear-gradient\BVLinearGradient",
+					"$(SRCROOT)\..\node_modules\react-native-reanimated\ios/**",
 				);
 			};
 			name = Debug;
@@ -1474,6 +1526,10 @@
 					"\"$(SRCROOT)/$(TARGET_NAME)\"",
 					"\"$(SRCROOT)/$(TARGET_NAME)\"",
 					"\"$(SRCROOT)/$(TARGET_NAME)\"",
+					"\"$(SRCROOT)/$(TARGET_NAME)\"",
+					"\"$(SRCROOT)/$(TARGET_NAME)\"",
+					"\"$(SRCROOT)/$(TARGET_NAME)\"",
+					"\"$(SRCROOT)/$(TARGET_NAME)\"",
 				);
 				HEADER_SEARCH_PATHS = (
 					"$(inherited)",
@@ -1481,6 +1537,10 @@
 					"$(SRCROOT)\..\node_modules\react-native-i18n\ios",
 					"$(SRCROOT)\..\node_modules\react-native-vector-icons\RNVectorIconsManager",
 					"$(SRCROOT)\..\node_modules\react-native-navigation\lib\ios/**",
+					"$(SRCROOT)\..\node_modules\react-native-snackbar\ios",
+					"$(SRCROOT)\..\node_modules\react-native-fast-image\ios\FastImage/**",
+					"$(SRCROOT)\..\node_modules\react-native-linear-gradient\BVLinearGradient",
+					"$(SRCROOT)\..\node_modules\react-native-reanimated\ios/**",
 				);
 			};
 			name = Release;
@@ -1517,6 +1577,10 @@
 					"\"$(SRCROOT)/$(TARGET_NAME)\"",
 					"\"$(SRCROOT)/$(TARGET_NAME)\"",
 					"\"$(SRCROOT)/$(TARGET_NAME)\"",
+					"\"$(SRCROOT)/$(TARGET_NAME)\"",
+					"\"$(SRCROOT)/$(TARGET_NAME)\"",
+					"\"$(SRCROOT)/$(TARGET_NAME)\"",
+					"\"$(SRCROOT)/$(TARGET_NAME)\"",
 				);
 				HEADER_SEARCH_PATHS = (
 					"$(inherited)",
@@ -1524,6 +1588,10 @@
 					"$(SRCROOT)\..\node_modules\react-native-i18n\ios",
 					"$(SRCROOT)\..\node_modules\react-native-vector-icons\RNVectorIconsManager",
 					"$(SRCROOT)\..\node_modules\react-native-navigation\lib\ios/**",
+					"$(SRCROOT)\..\node_modules\react-native-snackbar\ios",
+					"$(SRCROOT)\..\node_modules\react-native-fast-image\ios\FastImage/**",
+					"$(SRCROOT)\..\node_modules\react-native-linear-gradient\BVLinearGradient",
+					"$(SRCROOT)\..\node_modules\react-native-reanimated\ios/**",
 				);
 			};
 			name = Debug;
@@ -1560,6 +1628,10 @@
 					"\"$(SRCROOT)/$(TARGET_NAME)\"",
 					"\"$(SRCROOT)/$(TARGET_NAME)\"",
 					"\"$(SRCROOT)/$(TARGET_NAME)\"",
+					"\"$(SRCROOT)/$(TARGET_NAME)\"",
+					"\"$(SRCROOT)/$(TARGET_NAME)\"",
+					"\"$(SRCROOT)/$(TARGET_NAME)\"",
+					"\"$(SRCROOT)/$(TARGET_NAME)\"",
 				);
 				HEADER_SEARCH_PATHS = (
 					"$(inherited)",
@@ -1567,6 +1639,10 @@
 					"$(SRCROOT)\..\node_modules\react-native-i18n\ios",
 					"$(SRCROOT)\..\node_modules\react-native-vector-icons\RNVectorIconsManager",
 					"$(SRCROOT)\..\node_modules\react-native-navigation\lib\ios/**",
+					"$(SRCROOT)\..\node_modules\react-native-snackbar\ios",
+					"$(SRCROOT)\..\node_modules\react-native-fast-image\ios\FastImage/**",
+					"$(SRCROOT)\..\node_modules\react-native-linear-gradient\BVLinearGradient",
+					"$(SRCROOT)\..\node_modules\react-native-reanimated\ios/**",
 				);
 			};
 			name = Release;

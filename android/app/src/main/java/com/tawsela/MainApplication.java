@@ -3,6 +3,12 @@ package com.tawsela;
 import android.app.Application;
 
 import com.facebook.react.ReactApplication;
+import ca.jaysoo.extradimensions.ExtraDimensionsPackage;
+import com.wheelpicker.WheelPickerPackage;
+import com.swmansion.reanimated.ReanimatedPackage;
+import com.BV.LinearGradient.LinearGradientPackage;
+import com.dylanvann.fastimage.FastImageViewPackage;
+import com.azendoo.reactnativesnackbar.SnackbarPackage;
 import com.oblador.vectoricons.VectorIconsPackage;
 import com.AlexanderZaytsev.RNI18n.RNI18nPackage;
 import com.swmansion.gesturehandler.react.RNGestureHandlerPackage;
@@ -44,7 +50,13 @@ public class MainApplication extends NavigationApplication {
             // eg. new VectorIconsPackage()
             new VectorIconsPackage(),
             new RNI18nPackage(),
-            new RNGestureHandlerPackage()
+            new RNGestureHandlerPackage(),
+            new SnackbarPackage(),
+            new FastImageViewPackage(),
+            new LinearGradientPackage(),
+            new ReanimatedPackage(),
+            new WheelPickerPackage(),
+            new ExtraDimensionsPackage()
         );
     }
   

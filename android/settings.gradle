@@ -1,4 +1,16 @@
 rootProject.name = 'Tawsela'
+include ':react-native-extra-dimensions-android'
+project(':react-native-extra-dimensions-android').projectDir = new File(rootProject.projectDir, '../node_modules/react-native-extra-dimensions-android/android')
+include ':react-native-wheel-picker-android'
+project(':react-native-wheel-picker-android').projectDir = new File(rootProject.projectDir, '../node_modules/react-native-wheel-picker-android/android')
+include ':react-native-reanimated'
+project(':react-native-reanimated').projectDir = new File(rootProject.projectDir, '../node_modules/react-native-reanimated/android')
+include ':react-native-linear-gradient'
+project(':react-native-linear-gradient').projectDir = new File(rootProject.projectDir, '../node_modules/react-native-linear-gradient/android')
+include ':react-native-fast-image'
+project(':react-native-fast-image').projectDir = new File(rootProject.projectDir, '../node_modules/react-native-fast-image/android')
+include ':react-native-snackbar'
+project(':react-native-snackbar').projectDir = new File(rootProject.projectDir, '../node_modules/react-native-snackbar/android')
 include ':react-native-vector-icons'
 project(':react-native-vector-icons').projectDir = new File(rootProject.projectDir, '../node_modules/react-native-vector-icons/android')
 include ':react-native-i18n'

@@ -1,4 +1,4 @@
-import {SELECTED_TAB}  from '../actions/type';
+import {SELECTED_TAB}  from '../actions/types';
 
 const initialState = {
   currentIndex:0

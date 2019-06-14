@@ -1,14 +1,16 @@
-import { Navigation } from "react-native-navigation";
-import App from "./App";
+import { I18nManager, Text } from 'react-native';
+import I18n from 'react-native-i18n';
 
-Navigation.registerComponent(`navigation.playground.WelcomeScreen`, () => App);
+import ar from './src/translations/ar.json';
+import en from './src/translations/en.json';
 
-Navigation.events().registerAppLaunchedListener(() => {
-  Navigation.setRoot({
-    root: {
-      component: {
-        name: "navigation.playground.WelcomeScreen"
-      }
-    }
-  });
-});
+import { startApp } from './src/App';
+
+I18nManager.allowRTL(false);
+
+I18n.translations = {
+  ar: Object.assign(ar),
+  en: Object.assign(en),
+};
+
+startApp();

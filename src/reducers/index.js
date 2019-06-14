@@ -1,11 +1,11 @@
 import { combineReducers } from 'redux';
 
 
-import LangReducer from './langReducer';
+import lang from './lang';
 import SelectedTab from './currentSelectedTab'
 
 
 export default combineReducers({
-  lang: LangReducer,
+  lang: lang,
   selTab : SelectedTab
 });

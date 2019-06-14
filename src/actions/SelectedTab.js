@@ -1,4 +1,4 @@
-import * as types from './type';
+import * as types from './types';
 
 export const onSelectedTab = (index) => async (dispatch, store) => {
   console.log("index" , index);

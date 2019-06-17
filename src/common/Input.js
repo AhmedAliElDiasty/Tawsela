@@ -491,7 +491,7 @@ class Input extends PureComponent {
           row
           height={height}
           backgroundColor={backgroundColor}
-          borderRadius={borderRadius}
+          borderRadius={30||borderRadius}
           elevation={elevation}
           borderWidth={borderWidth || (noBorder ? 0 : 1)}
           borderTopWidth={borderTopWidth}

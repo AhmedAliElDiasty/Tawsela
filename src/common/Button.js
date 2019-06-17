@@ -31,7 +31,7 @@ class Button extends PureComponent {
       start: { x: 0, y: 0 },
       end: { x: 1, y: 1 },
       locations: [0, 0.6],
-      colors: ['#e46961', '#E04F46'],
+      colors: ['#F67B11', '#F07D24'],
     },
     ...getTheme().button,
   };

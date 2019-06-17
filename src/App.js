@@ -11,9 +11,11 @@ import {
 } from './common';
 import { initLang, setLang } from './actions/lang';
 import colors from './common/defaults/colors';
+import { autoLogin } from './actions/authAction';
 
 
-export const startApp =() => {
+
+export const startApp = () => {
     Navigation.events().registerAppLaunchedListener(async () => {
         let once = false;
 
@@ -46,12 +48,26 @@ export const startApp =() => {
             },
         });
         await initLang('ar', true)(store.dispatch);
+        const { exist } = await autoLogin()(
+            store.dispatch,
+            store.getState,
+            
+        );
+        console.log('exist',exist);
+        
+        if (exist) {
+                nv.init('MAIN_STACK', {
+                    name: 'home',
+                });
+        } else {
+            nv.init('MAIN_STACK', {
+                name: 'login',
+            });
+        }
         registerScreens();
-        nv.init('MAIN_STACK', {
-            name: 'Login',
-        });
+        
     });
-    
+
 
 
 };

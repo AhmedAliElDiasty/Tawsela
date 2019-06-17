@@ -7,6 +7,8 @@ import store from '../store';
 
 import Login from './login/Login'
 import Signup from './signup/Signup'
+import PhotoSelection from './photoSelection/PhotoSelection';
+import Home from './home/Home'
 
 
 export default function () {
@@ -22,8 +24,10 @@ export default function () {
                 }
             },
         );
-        Navigation.registerComponent('Login', createScene(Login));
-        Navigation.registerComponent('Signup', createScene(Signup));
+    Navigation.registerComponent('login', createScene(Login));
+    Navigation.registerComponent('signup', createScene(Signup));
+    Navigation.registerComponent('photoSelection', createScene(PhotoSelection));
+    Navigation.registerComponent('home',createScene(Home));
 
 
 }

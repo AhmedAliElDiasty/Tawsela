@@ -2,7 +2,7 @@ import firebase from 'react-native-firebase';
 import { AsyncStorage } from 'react-native';
 import axios from 'axios';
 import I18n from 'react-native-i18n';
-import { API_ENDPOINT_FOOD_SERVICE } from './Config';
+import { API_ENDPOINT_TAWSELA } from './Config';
 
 import { showError } from '../common/utils/localNotifications';
 
@@ -26,7 +26,7 @@ export default class PushNotificationService {
     try {
       const oldToken = await AsyncStorage.getItem('@fcmToken');
       const response = await axios.post(
-        `${API_ENDPOINT_FOOD_SERVICE}providers/push-update`,
+        `${API_ENDPOINT_TAWSELA}providers/push-update`,
         {
           oldToken,
           newToken,
@@ -52,7 +52,7 @@ export default class PushNotificationService {
       console.log(fcmToken);
 
       const response = await axios.post(
-        `${API_ENDPOINT_FOOD_SERVICE}providers/push-subscribe`,
+        `${API_ENDPOINT_TAWSELA}providers/push-subscribe`,
         {
           token: fcmToken,
         },
@@ -74,7 +74,7 @@ export default class PushNotificationService {
     try {
       const deviceToken = await AsyncStorage.getItem('@fcmToken');
       const response = await axios.post(
-        `${API_ENDPOINT_FOOD_SERVICE}providers/push-unsubscribe`,
+        `${API_ENDPOINT_TAWSELA}providers/push-unsubscribe`,
         {
           token: deviceToken,
         },

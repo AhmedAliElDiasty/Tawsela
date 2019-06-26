@@ -19,6 +19,33 @@ export const startApp = () => {
     Navigation.events().registerAppLaunchedListener(async () => {
         let once = false;
 
+        axios.interceptors.request.use(
+            config => {
+              const { currentUser } = store.getState().auth;
+              const { lang } = store.getState().lang;
+        
+              const Authorization =
+                config.headers.Authorization === 'none'
+                  ? {}
+                  : {
+                      Authorization: currentUser
+                        ? `Bearer ${currentUser.token}`
+                        : config.headers.Authorization,
+                    };
+              const { Authorization: auth, ...headers } = config.headers;
+              return {
+                ...config,
+                headers: {
+                  ...headers,
+                  ...Authorization,
+                },
+              };              
+            },
+            error => {
+              Promise.reject("============================+++++++++++",error);
+            },
+          );
+
         Navigation.setDefaultOptions({
             statusBar: {
                 visible: true,

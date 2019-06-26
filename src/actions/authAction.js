@@ -91,7 +91,7 @@ export const setCurrentUser = data => async (dispatch, getState) => {
         dispatch({ type: LOGIN_SUCCESS, payload: response.data });
   
         AppNavigation.setStackRoot({
-            name: 'home',
+            name: 'completeData',
             passProps: {
               userData: response.data,
             },
@@ -148,6 +148,57 @@ export const autoLogin = () => async (dispatch, getState) => {
     }
     return { exist: false };
   };
+
+
+
+  export function completeData(values, setSubmitting) {
+    return async (dispatch, getState) => {
+      const data = new FormData();
+  
+      data.append('location', values.location);
+      if (values.image) {
+        data.append('image', {
+          uri: values.image,
+          type: 'image/*',
+          name: 'my-image',
+        });
+      }
+  
+      try {
+          console.log("Data========>>>>",data);
+          
+        const response = await axios.post(
+          `${API_ENDPOINT_GATEWAY}clients`,
+          data,
+          {
+            headers: {
+              'Content-Type': 'multipart/form-data',
+            },
+          },
+        );
+        console.log("Response",response.data);
+        // AsyncStorage.setItem('@CurrentUser', JSON.stringify(response.data));
+
+        setSubmitting(false);
+        
+  
+        // dispatch({ type: LOGIN_SUCCESS, payload: response.data });
+  
+        AppNavigation.setStackRoot({
+            name: 'home',
+            passProps: {
+              userData: response.data,
+            },
+          });
+
+      } catch (error) {
+          console.log('error',error);
+          
+        // showError(error[1].message);
+        setSubmitting(false);
+      }
+    };
+}
   
 //   export const logout = () => async (dispatch, getState) => {
 //     const userId = store.getState().auth.currentUser.user.id;

@@ -9,6 +9,7 @@ import Login from './login/Login'
 import Signup from './signup/Signup'
 import PhotoSelection from './photoSelection/PhotoSelection';
 import Home from './home/Home'
+import CompleteData from './completeData/CompleteData'
 
 
 export default function () {
@@ -28,6 +29,7 @@ export default function () {
     Navigation.registerComponent('signup', createScene(Signup));
     Navigation.registerComponent('photoSelection', createScene(PhotoSelection));
     Navigation.registerComponent('home',createScene(Home));
+    Navigation.registerComponent('completeData',createScene(CompleteData));
 
 
 }

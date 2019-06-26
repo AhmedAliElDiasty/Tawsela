@@ -6,8 +6,12 @@ import I18n from 'react-native-i18n'
 import {validationSchema} from './Validation'
 import { signIn } from '../../actions/authAction';
 import {bindActionCreators} from 'redux'
+import SplashScreen from 'react-native-splash-screen'
 
 class Login extends Component {
+    componentDidMount(){
+        SplashScreen.hide();
+    }
 
     renderForm = ({
         injectFormProps,

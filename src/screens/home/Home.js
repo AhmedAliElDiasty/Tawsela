@@ -60,7 +60,7 @@ class Home extends Component {
               console.log('error',error);
             },
           }}
-          rowRenderer={data => <ProvidersCell userId={currentUser._id} data={data}/>}
+          rowRenderer={data => <ProvidersCell favorite userId={currentUser._id} data={data}/>}
           rowHeight={61.5}
         />
       </AppView>

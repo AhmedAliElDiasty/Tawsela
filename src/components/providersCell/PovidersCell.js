@@ -8,9 +8,11 @@ import {
   AppStarRating,
   AppIcon,
   AppSpinner,
+  showSuccess,
 } from '../../common';
 import { API_ENDPOINT_TAWSELA } from '../../utils/Config';
 import axios from 'axios'
+import I18n from 'react-native-i18n'
 
 class ProvidersCell extends Component {
   componentDidMount(){
@@ -41,7 +43,7 @@ class ProvidersCell extends Component {
           provider: id,
         },
       );
-      // this.props.updateItemInList(this.props.data.id, { inFavourites: true });
+      this.props.updateItemInList(this.props.data.id, { inFavourites: true });
       this.setState({ loading: false });
       showSuccess(I18n.t('favourite-add'));
     } catch (error) {
@@ -59,12 +61,14 @@ class ProvidersCell extends Component {
       const response = await axios.delete(
         `${API_ENDPOINT_TAWSELA}clients/${clientId}/providers/${id}/removefavorite`,
       );
-      // this.props.updateItemInList(this.props.data.id, { inFavourites: false });
+      this.props.updateItemInList(this.props.data.id, { inFavourites: false });
       this.setState({ loading: false });
       showSuccess(I18n.t('favourite-remove'));
     } catch (error) {
       this.setState({ loading: false });
       // showError(String(error[3]));
+      console.log('error',error);
+      
       console.log('ErrorOnDeleteFavourite', JSON.parse(JSON.stringify(error)));
     }
   };
@@ -76,14 +80,14 @@ class ProvidersCell extends Component {
       const response = await axios.delete(
         `${API_ENDPOINT_TAWSELA}clients/${clientId}/providers/${id}/removefavorite`,
       );
-      // this.props.updateItemInList(data.id, {}, v => ({
-      //   product: { ...v.product, inFavourites: false },
-      // }));
-      this.props.onDelete();
+      this.props.updateItemInList(data.id, {}, v => ({
+        product: { ...v.product, inFavourites: false },
+      }));
       showSuccess(I18n.t('favourite-remove'));
       this.setState({ loading: false });
     } catch (error) {
       // showError(String(error[3]));
+      console.log('error',error);
       this.setState({ loading: false });
       console.log('ErrorOnDelete', JSON.parse(JSON.stringify(error)));
     }

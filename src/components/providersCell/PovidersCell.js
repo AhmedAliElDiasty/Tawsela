@@ -32,9 +32,6 @@ class ProvidersCell extends Component {
 
   onAddToFavorite = async id => {
     const clientId = this.props.userId;
-    console.log(`${API_ENDPOINT_TAWSELA}clients/${clientId}/addTofavorite`);
-    
-
     try {
       this.setState({ loading: true });
       const response = await axios.post(
@@ -43,7 +40,8 @@ class ProvidersCell extends Component {
           provider: id,
         },
       );
-      this.props.updateItemInList(this.props.data.id, { inFavourites: true });
+      this.props.updateItemInList(this.props.data.user._id, { inFavourites: true });
+      this.props.onChangeFavourite();
       this.setState({ loading: false });
       showSuccess(I18n.t('favourite-add'));
     } catch (error) {
@@ -61,7 +59,8 @@ class ProvidersCell extends Component {
       const response = await axios.delete(
         `${API_ENDPOINT_TAWSELA}clients/${clientId}/providers/${id}/removefavorite`,
       );
-      this.props.updateItemInList(this.props.data.id, { inFavourites: false });
+      this.props.updateItemInList(this.props.data.user._id, { inFavourites: false });
+      this.props.onChangeFavourite();
       this.setState({ loading: false });
       showSuccess(I18n.t('favourite-remove'));
     } catch (error) {
@@ -80,9 +79,10 @@ class ProvidersCell extends Component {
       const response = await axios.delete(
         `${API_ENDPOINT_TAWSELA}clients/${clientId}/providers/${id}/removefavorite`,
       );
-      this.props.updateItemInList(data.id, {}, v => ({
+      this.props.updateItemInList(this.props.data.user._id, {}, v => ({
         product: { ...v.product, inFavourites: false },
       }));
+      this.props.onChangeFavourite();
       showSuccess(I18n.t('favourite-remove'));
       this.setState({ loading: false });
     } catch (error) {
@@ -144,8 +144,8 @@ class ProvidersCell extends Component {
             // style={{ position: 'absolute', bottom: 7, right: 12 }}
           >
             {this.state.loading ? (
-              <AppView paddingBottom={3}>
-                <AppSpinner color="primary" size={8} />
+              <AppView paddingVertical={1.5}>
+                <AppSpinner color={data.inFavourites?'white':'primary'} size={6.1} />
               </AppView>
             ) : (
               <AppIcon

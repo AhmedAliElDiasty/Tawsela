@@ -10,6 +10,8 @@ import Signup from './signup/Signup'
 import PhotoSelection from './photoSelection/PhotoSelection';
 import Home from './home/Home'
 import CompleteData from './completeData/CompleteData'
+import Favourite from './favourite/Favourite';
+import More from './more/More'
 
 
 export default function () {
@@ -30,6 +32,9 @@ export default function () {
     Navigation.registerComponent('photoSelection', createScene(PhotoSelection));
     Navigation.registerComponent('home',createScene(Home));
     Navigation.registerComponent('completeData',createScene(CompleteData));
+    Navigation.registerComponent('favourite',createScene(Favourite));
+    Navigation.registerComponent('more',createScene(More));
+    
 
 
 }

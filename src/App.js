@@ -83,9 +83,25 @@ export const startApp = () => {
         console.log('exist',exist);
         
         if (exist) {
-                nv.init('MAIN_STACK', {
-                    name: 'home',
-                });
+            nv.init('MAIN_STACK', {
+                bottomTabs: [
+                  {
+                    screen: 'home',
+                    label: 'Home',
+                    icon: require('./assets/images/home.png'),
+                  },
+                  {
+                    screen: 'favourite',
+                    label: 'favourite',
+                    icon: require('./assets/images/favourite.png'),
+                  },
+                  {
+                    screen: 'more',
+                    label: 'More',
+                    icon: require('./assets/images/more.png'),
+                  },
+                ],
+              });
         } else {
             nv.init('MAIN_STACK', {
                 name: 'login',

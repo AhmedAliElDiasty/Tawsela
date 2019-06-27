@@ -11,14 +11,11 @@ import {
   showSuccess,
 } from '../../common';
 import { API_ENDPOINT_TAWSELA } from '../../utils/Config';
-import axios from 'axios'
-import I18n from 'react-native-i18n'
+import axios from 'axios';
+import I18n from 'react-native-i18n';
 
 class ProvidersCell extends Component {
-  componentDidMount(){
-    
-    
-  }
+  componentDidMount() {}
   state = {
     loading: false,
   };
@@ -40,15 +37,17 @@ class ProvidersCell extends Component {
           provider: id,
         },
       );
-      this.props.updateItemInList(this.props.data.user._id, { inFavourites: true });
+      this.props.updateItemInList(this.props.data.user._id, {
+        inFavourites: true,
+      });
       this.props.onChangeFavourite();
       this.setState({ loading: false });
       showSuccess(I18n.t('favourite-add'));
     } catch (error) {
       // showError(String(error[3]));
       this.setState({ loading: false });
-      console.log("Error-----",error);
-      
+      console.log('Error-----', error);
+
       console.log('errorOnAddFavourite', JSON.parse(JSON.stringify(error)));
     }
   };
@@ -59,15 +58,17 @@ class ProvidersCell extends Component {
       const response = await axios.delete(
         `${API_ENDPOINT_TAWSELA}clients/${clientId}/providers/${id}/removefavorite`,
       );
-      this.props.updateItemInList(this.props.data.user._id, { inFavourites: false });
+      this.props.updateItemInList(this.props.data.user._id, {
+        inFavourites: false,
+      });
       this.props.onChangeFavourite();
       this.setState({ loading: false });
       showSuccess(I18n.t('favourite-remove'));
     } catch (error) {
       this.setState({ loading: false });
       // showError(String(error[3]));
-      console.log('error',error);
-      
+      console.log('error', error);
+
       console.log('ErrorOnDeleteFavourite', JSON.parse(JSON.stringify(error)));
     }
   };
@@ -87,14 +88,28 @@ class ProvidersCell extends Component {
       this.setState({ loading: false });
     } catch (error) {
       // showError(String(error[3]));
-      console.log('error',error);
+      console.log('error', error);
       this.setState({ loading: false });
       console.log('ErrorOnDelete', JSON.parse(JSON.stringify(error)));
     }
   };
   render() {
     const { data, rtl } = this.props;
-    const image = data.user.profileImage;
+    const image = data.provider
+      ? data.provider.user.profileImage
+      : data.user.profileImage;
+    const name = data.provider
+      ? rtl
+        ? data.provider.user.name.ar
+        : data.provider.user.name.en
+      : rtl
+      ? data.user.name.ar
+      : data.user.name.en;
+    const id = data.provider ? data.provider.user._id : data.user._id;
+    const inFavourites = data.provider ? data.provider.inFavourites : data.inFavourites;
+    const transferFees = data.provider ? data.provider.transferFees : data.transferFees;
+    const busy = data.provider ? data.provider.busy : data.busy;
+    const rating = data.provider ? data.provider.rating : data.rating;
     return (
       <AppView row stretch spaceBetween marginHorizontal={7} marginVertical={3}>
         <AppView row>
@@ -106,7 +121,7 @@ class ProvidersCell extends Component {
               borderRadius={50}
             />
             <AppImage
-              backgroundColor={data.busy ? 'grey' : '#5FDBA7'}
+              backgroundColor={busy ? 'grey' : '#5FDBA7'}
               equalSize={4}
               resizeMode="contain"
               borderRadius={50}
@@ -118,43 +133,44 @@ class ProvidersCell extends Component {
               marginTop={-5}
               marginHorizontal={2.5}
             >
-              <AppStarRating size={5} rate={data.rating} />
+              <AppStarRating size={5} rate={rating} />
             </AppView>
           </AppView>
-          <AppView marginHorizontal={10} centerY >
-            <AppText size={8}>
-              {rtl ? data.user.name.ar : data.user.name.en}
-            </AppText>
+          <AppView marginHorizontal={10} centerY>
+            <AppText size={8}>{name}</AppText>
             <AppText color="#6a6a6a" size={5}>
-              #{data.user._id}
+              #{id}
             </AppText>
           </AppView>
         </AppView>
 
         <AppView centerX>
           <AppView>
-            <AppText>{data.transferFees}</AppText>
+            <AppText>{transferFees}</AppText>
           </AppView>
           <AppView
             // marginTop={20}
             borderRadius={50}
             paddingVertical={2.5}
             paddingHorizontal={4}
-            backgroundColor={data.inFavourites ? 'primary' : '#EBEAEA'}
+            backgroundColor={inFavourites ? 'primary' : '#EBEAEA'}
             // style={{ position: 'absolute', bottom: 7, right: 12 }}
           >
             {this.state.loading ? (
               <AppView paddingVertical={1.5}>
-                <AppSpinner color={data.inFavourites?'white':'primary'} size={6.1} />
+                <AppSpinner
+                  color={inFavourites ? 'white' : 'primary'}
+                  size={6.1}
+                />
               </AppView>
             ) : (
               <AppIcon
                 name="heart"
                 type="oct"
                 size={10}
-                color={data.inFavourites ? 'white' : '#777'}
+                color={inFavourites ? 'white' : '#777'}
                 onPress={() => {
-                  this.favouriteToggle(data.user._id);
+                  this.favouriteToggle(id);
                 }}
               />
             )}

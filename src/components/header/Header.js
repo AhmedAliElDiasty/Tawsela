@@ -136,8 +136,8 @@ export default class Header extends Component {
           borderBottomWidth={flat? 0:0.5}
         >
           {this.renderLeft()}
-          <AppView flex={3} center>
-            <AppText size={6} bold numberOfLines={1}>
+          <AppView flex={3} >
+            <AppText size={10} bold numberOfLines={1}>
               {title}
             </AppText>
           </AppView>

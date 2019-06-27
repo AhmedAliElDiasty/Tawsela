@@ -17,5 +17,8 @@
   "field-must-be-larger-than-one-chars": "الحقل يجب ان بملأ بأكثر من حرف",
   "favourite-add": "تمت الاضافة إلى المفضلة",
   "favourite-remove": "تمت الإزالة من المفضلة",
-  "ui-close": "اغلاق"
+  "ui-close": "اغلاق",
+  "home": "الرئيسية",
+  "favourite-title": "المفضلة",
+  "more-title": "المزيد"
 }

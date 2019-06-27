@@ -6,6 +6,8 @@ import SelectedTab from './currentSelectedTab'
 import network from './network';
 import auth from './auth'
 import list from './list'
+import bottomTabs from './bottomTabs'
+
 
 
 export default combineReducers({
@@ -13,5 +15,6 @@ export default combineReducers({
   selTab : SelectedTab,
   network,
   auth,
-  list
+  list,
+  bottomTabs
 });

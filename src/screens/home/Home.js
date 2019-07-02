@@ -29,14 +29,9 @@ class Home extends Component {
   };
 
   componentDidAppear = () => {
-    this.setState({
-      isVisible: !this.state.isVisible,
-    });
+    this.props.refreshList('providersList');
   };
-  onChangeFavourite = () => {
-    // this.props.refreshList('providersList');
-  };
-
+  
   render() {
     console.log('State', this.state.data);
     const { currentUser } = this.props;
@@ -55,9 +50,6 @@ class Home extends Component {
                 this.setState({
                   data: response.data.data,
                 });
-                console.log('====================================');
-                console.log(response);
-                console.log('====================================');
                 return {
                   data: response.data.data,
                 };
@@ -69,7 +61,7 @@ class Home extends Component {
             rowRenderer={data => (
               <ProvidersCell
                 onChangeFavourite={this.onChangeFavourite}
-                userId={currentUser._id}
+                userId={currentUser.user._id}
                 data={data}
               />
             )}

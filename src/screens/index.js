@@ -12,6 +12,7 @@ import Home from './home/Home'
 import CompleteData from './completeData/CompleteData'
 import Favourite from './favourite/Favourite';
 import More from './more/More'
+import ProviderDetails from './providerDetails/ProviderDetails'
 
 
 export default function () {
@@ -34,6 +35,7 @@ export default function () {
     Navigation.registerComponent('completeData',createScene(CompleteData));
     Navigation.registerComponent('favourite',createScene(Favourite));
     Navigation.registerComponent('more',createScene(More));
+    Navigation.registerComponent('providerDetails',createScene(ProviderDetails));
     
 
 

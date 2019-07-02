@@ -60,7 +60,6 @@ class Home extends Component {
             }}
             rowRenderer={data => (
               <ProvidersCell
-                onChangeFavourite={this.onChangeFavourite}
                 userId={currentUser.user._id}
                 data={data}
               />

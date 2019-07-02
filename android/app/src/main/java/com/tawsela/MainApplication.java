@@ -3,6 +3,7 @@ package com.tawsela;
 import android.app.Application;
 
 import com.facebook.react.ReactApplication;
+import com.cmcewen.blurview.BlurViewPackage;
 import org.devio.rn.splashscreen.SplashScreenReactPackage;
 import ca.jaysoo.extradimensions.ExtraDimensionsPackage;
 import com.wheelpicker.WheelPickerPackage;
@@ -58,7 +59,8 @@ public class MainApplication extends NavigationApplication {
             new ReanimatedPackage(),
             new WheelPickerPackage(),
             new ExtraDimensionsPackage(),
-            new SplashScreenReactPackage()
+            new SplashScreenReactPackage(),
+            new BlurViewPackage()
         );
     }
   

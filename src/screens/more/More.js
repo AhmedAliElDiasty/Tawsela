@@ -7,7 +7,7 @@ import { AppHeader, CustomBottomTabs } from '../../components';
 class More extends Component{
   render(){
     return(
-      <AppView>
+      <AppView flex stretch>
         <AppHeader title={I18n.t('more-title')} hideBack/>
         <AppText>More</AppText>
         <CustomBottomTabs componentId={this.props.componentId} />

@@ -9,6 +9,7 @@ import {
   AppIcon,
   AppSpinner,
   showSuccess,
+  AppNavigation,
 } from '../../common';
 import { API_ENDPOINT_TAWSELA } from '../../utils/Config';
 import axios from 'axios';
@@ -40,7 +41,6 @@ class ProvidersCell extends Component {
       this.props.updateItemInList(this.props.data.user._id, {
         inFavourites: true,
       });
-      this.props.onChangeFavourite();
       this.setState({ loading: false });
       showSuccess(I18n.t('favourite-add'));
     } catch (error) {
@@ -61,7 +61,6 @@ class ProvidersCell extends Component {
       this.props.updateItemInList(this.props.data.user._id, {
         inFavourites: false,
       });
-      this.props.onChangeFavourite();
       this.setState({ loading: false });
       showSuccess(I18n.t('favourite-remove'));
     } catch (error) {
@@ -83,7 +82,6 @@ class ProvidersCell extends Component {
       this.props.updateItemInList(this.props.data.user._id, {}, v => ({
         product: { ...v.product, inFavourites: false },
       }));
-      this.props.onChangeFavourite();
       showSuccess(I18n.t('favourite-remove'));
       this.setState({ loading: false });
     } catch (error) {
@@ -96,16 +94,21 @@ class ProvidersCell extends Component {
   render() {
     const { data, rtl } = this.props;
     const image = data.user.profileImage;
-    const name =  rtl
-      ? data.user.name.ar
-      : data.user.name.en;
+    const name = rtl ? data.user.name.ar : data.user.name.en;
     const id = data.user._id;
     const inFavourites = data.inFavourites;
     const transferFees = data.transferFees;
     const busy = data.busy;
     const rating = data.rating;
     return (
-      <AppView row stretch spaceBetween marginHorizontal={7} marginVertical={3}>
+      <AppView
+        row
+        stretch
+        spaceBetween
+        marginHorizontal={7}
+        marginVertical={3}
+        onPress={() => AppNavigation.push('providerDetails')}
+      >
         <AppView row>
           <AppView centerY>
             <AppImage
@@ -147,7 +150,9 @@ class ProvidersCell extends Component {
             borderRadius={50}
             paddingVertical={2.5}
             paddingHorizontal={4}
-            backgroundColor={this.props.data.inFavourites ? 'primary' : '#EBEAEA'}
+            backgroundColor={
+              this.props.data.inFavourites ? 'primary' : '#EBEAEA'
+            }
             // style={{ position: 'absolute', bottom: 7, right: 12 }}
           >
             {this.state.loading ? (
@@ -179,4 +184,7 @@ const mapStateToProps = state => ({
   rtl: state.lang.rtl,
   currentUser: state.auth.currentUser,
 });
-export default connect(mapStateToProps, null)(ProvidersCell);
+export default connect(
+  mapStateToProps,
+  null,
+)(ProvidersCell);

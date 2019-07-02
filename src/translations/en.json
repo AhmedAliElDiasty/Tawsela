@@ -20,5 +20,6 @@
   "ui-close": "close",
   "home": "Home",
   "favourite-title": "Favourite",
-  "more-title": "More"
+  "more-title": "More",
+  "providerDetailsTitle": "Provider details"
 }

@@ -108,6 +108,8 @@ android {
         missingDimensionStrategy "RNN.reactNativeVersion", "reactNative57_5"
         versionCode 1
         versionName "1.0"
+        renderscriptTargetApi 23
+        renderscriptSupportModeEnabled true
     }
     compileOptions {
         sourceCompatibility JavaVersion.VERSION_1_8
@@ -143,6 +145,7 @@ android {
 }
 
 dependencies {
+    implementation project(':@react-native-community_blur')
     implementation project(':react-native-splash-screen')
     implementation project(':react-native-extra-dimensions-android')
     implementation project(':react-native-wheel-picker-android')

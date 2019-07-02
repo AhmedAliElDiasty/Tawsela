@@ -1,8 +1,8 @@
 import React, { Component } from 'react';
 import I18n from 'react-native-i18n';
 import {connect} from 'react-redux'
-import { AppView, AppText, AppList } from '../../common';
-import { AppHeader, ProvidersCell, CustomBottomTabs } from '../../components';
+import { AppView, AppList } from '../../common';
+import { AppHeader, CustomBottomTabs, FavouriteCell } from '../../components';
 import { API_ENDPOINT_TAWSELA } from '../../utils/Config';
 import { refreshList } from '../../actions/list';
 import { bindActionCreators } from 'redux';
@@ -15,12 +15,13 @@ class Favourite extends Component{
   };
 
   componentDidAppear = () => {
+    this.props.refreshList('favouriteList');
     this.setState({
       isVisible: !this.state.isVisible,
     });
   };
   onChangeFavourite = () => {
-    this.props.refreshList('providersList');
+    this.props.refreshList('favouriteList');
   };
 
   render(){
@@ -29,7 +30,7 @@ class Favourite extends Component{
       <AppView flex stretch>
         <AppHeader title={I18n.t('favourite-title')} hideBack/>
         <AppList
-          idPathInData="id"
+          idPathInData="provider.user._id"
           refreshControl={this.props.favouriteList}
           apiRequest={{
             url: `${API_ENDPOINT_TAWSELA}clients/${currentUser._id}/get-all-favorites`,
@@ -47,7 +48,7 @@ class Favourite extends Component{
             },
           }}
           rowRenderer={data => (
-            <ProvidersCell
+            <FavouriteCell
               onChangeFavourite={this.onChangeFavourite}
               userId={currentUser._id}
               data={data}

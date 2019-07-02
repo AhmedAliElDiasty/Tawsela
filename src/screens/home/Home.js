@@ -34,7 +34,7 @@ class Home extends Component {
     });
   };
   onChangeFavourite = () => {
-    this.props.refreshList('providersList');
+    // this.props.refreshList('providersList');
   };
 
   render() {
@@ -46,7 +46,7 @@ class Home extends Component {
         <AppHeader hideBack title={I18n.t('home')} />
         <AppView flex stretch style={{ marginBottom: barHeight }}>
           <AppList
-            idPathInData="id"
+            idPathInData="user._id"
             refreshControl={this.props.providersList}
             apiRequest={{
               url: `${API_ENDPOINT_TAWSELA}providers`,
@@ -55,6 +55,9 @@ class Home extends Component {
                 this.setState({
                   data: response.data.data,
                 });
+                console.log('====================================');
+                console.log(response);
+                console.log('====================================');
                 return {
                   data: response.data.data,
                 };

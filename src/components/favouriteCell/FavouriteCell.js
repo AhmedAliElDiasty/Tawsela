@@ -20,7 +20,7 @@ class ProvidersCell extends Component {
     loading: false,
   };
   favouriteToggle(id) {
-    if (!this.props.data.inFavourites) {
+    if (!this.props.data.provider.inFavourites) {
       this.onAddToFavorite(id);
     } else {
       this.props.favorite ? this.onDelete(id) : this.onDeleteFavourite(id);
@@ -37,7 +37,7 @@ class ProvidersCell extends Component {
           provider: id,
         },
       );
-      this.props.updateItemInList(this.props.data.user._id, {
+      this.props.updateItemInList(this.props.data.provider.user._id, {
         inFavourites: true,
       });
       this.props.onChangeFavourite();
@@ -58,7 +58,7 @@ class ProvidersCell extends Component {
       const response = await axios.delete(
         `${API_ENDPOINT_TAWSELA}clients/${clientId}/providers/${id}/removefavorite`,
       );
-      this.props.updateItemInList(this.props.data.user._id, {
+      this.props.updateItemInList(this.props.data.provider.user._id, {
         inFavourites: false,
       });
       this.props.onChangeFavourite();
@@ -74,13 +74,12 @@ class ProvidersCell extends Component {
   };
   onDelete = async id => {
     const clientId = this.props.userId;
-    const { data } = this.props;
     try {
       this.setState({ loading: true });
       const response = await axios.delete(
         `${API_ENDPOINT_TAWSELA}clients/${clientId}/providers/${id}/removefavorite`,
       );
-      this.props.updateItemInList(this.props.data.user._id, {}, v => ({
+      this.props.updateItemInList(this.props.data.provider.user._id, {}, v => ({
         product: { ...v.product, inFavourites: false },
       }));
       this.props.onChangeFavourite();
@@ -95,15 +94,15 @@ class ProvidersCell extends Component {
   };
   render() {
     const { data, rtl } = this.props;
-    const image = data.user.profileImage;
+    const image = data.provider.user.profileImage;
     const name =  rtl
-      ? data.user.name.ar
-      : data.user.name.en;
-    const id = data.user._id;
-    const inFavourites = data.inFavourites;
-    const transferFees = data.transferFees;
-    const busy = data.busy;
-    const rating = data.rating;
+      ? data.provider.user.name.ar
+      : data.provider.user.name.en;
+    const id = data.provider.user._id;
+    const inFavourites = data.provider.inFavourites;
+    const transferFees = data.provider.transferFees;
+    const busy = data.provider.busy;
+    const rating = data.provider.rating;
     return (
       <AppView row stretch spaceBetween marginHorizontal={7} marginVertical={3}>
         <AppView row>
@@ -147,13 +146,13 @@ class ProvidersCell extends Component {
             borderRadius={50}
             paddingVertical={2.5}
             paddingHorizontal={4}
-            backgroundColor={this.props.data.inFavourites ? 'primary' : '#EBEAEA'}
+            backgroundColor={inFavourites ? 'primary' : '#EBEAEA'}
             // style={{ position: 'absolute', bottom: 7, right: 12 }}
           >
             {this.state.loading ? (
               <AppView paddingVertical={1.5}>
                 <AppSpinner
-                  color={this.props.data.inFavourites ? 'white' : 'primary'}
+                  color={inFavourites ? 'white' : 'primary'}
                   size={6.1}
                 />
               </AppView>
@@ -162,7 +161,7 @@ class ProvidersCell extends Component {
                 name="heart"
                 type="oct"
                 size={10}
-                color={this.props.data.inFavourites ? 'white' : '#777'}
+                color={inFavourites ? 'white' : '#777'}
                 onPress={() => {
                   this.favouriteToggle(id);
                 }}
@@ -179,4 +178,4 @@ const mapStateToProps = state => ({
   rtl: state.lang.rtl,
   currentUser: state.auth.currentUser,
 });
-export default connect(mapStateToProps, null)(ProvidersCell);
+export default connect()(ProvidersCell);

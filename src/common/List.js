@@ -144,11 +144,18 @@ class List extends Network {
   updateItemInList = (id, changedData, changedDataCB = () => ({})) => {
     const { _data } = this.state.dataProvider;
 
-    const index = _data.findIndex(
-      item => {Object.getDeepProp(item, this.props.idPathInData || 'id') === id
-      console.log("item====>>>",Object.getDeepProp(item, this.props.idPathInData || 'id'))}
-      
-    );
+    console.log('id ===>>>>', id);
+    console.log('id ===>>>>', this.props.idPathInData);
+
+    const index = _data.findIndex(item => {
+      console.log(
+        'id ===>>>>>>>>',
+        Object.getDeepProp(item, this.props.idPathInData || 'id') === id,
+      );
+
+      return Object.getDeepProp(item, this.props.idPathInData || 'id') === id;
+    });
+    console.log('index', index);
 
     _data[index] = {
       ..._data[index],
@@ -156,8 +163,6 @@ class List extends Network {
       ...changedDataCB(_data[index]),
     };
     this.setData(_data);
-    console.log('DATa',_data);
-    
   };
 
   handleParentViewLayout = e => {

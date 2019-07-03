@@ -134,7 +134,6 @@ class CustomBottomTabs extends Component {
       ? tabsAr.map(item => this.renderTab(item))
       : tabsEn
           .slice()
-          .reverse()
           .map(item => this.renderTab(item));
 
   renderExitAppModal = () => {

@@ -199,6 +199,60 @@ export const autoLogin = () => async (dispatch, getState) => {
       }
     };
 }
+
+export function updatePortfolio(values, setSubmitting) {
+  return async (dispatch, getState) => {
+    const data = new FormData();
+
+    data.append('nameAr', values.nameAr);
+    data.append('nameEn', values.nameEn);
+    data.append('email', values.email);
+    data.append('password', values.password);
+    if (
+      values.profileImage &&
+      values.profileImage !==
+        getState().auth.currentUser.user.profileImage
+    ) {
+      data.append('profileImage', {
+        uri: values.profileImage,
+        type: 'image/*',
+        name: 'profile-image',
+      });
+    }
+
+    try {
+        console.log("Data========>>>>",data);
+        
+      const response = await axios.patch(
+        `${API_ENDPOINT_GATEWAY}user/${getState().auth.currentUser.user._id}`,
+        data,
+        {
+          headers: {
+            'Content-Type': 'multipart/form-data',
+          },
+        },
+      );
+      console.log('Request   ',`${API_ENDPOINT_GATEWAY}user/${getState().auth.currentUser.user._id}`);
+      
+      console.log("Response",response.data);
+      AsyncStorage.setItem('@CurrentUser', JSON.stringify(response.data));
+
+      setSubmitting(false);
+      
+
+      dispatch({ type: LOGIN_SUCCESS, payload: response.data });
+
+      AppNavigation.pop();
+
+    } catch (error) {
+        console.log('error',error);
+        console.log('Request   ',`${API_ENDPOINT_GATEWAY}user/${getState().auth.currentUser.user._id}`);
+        
+      // showError(error[1].message);
+      setSubmitting(false);
+    }
+  };
+}
   
 //   export const logout = () => async (dispatch, getState) => {
 //     const userId = store.getState().auth.currentUser.user.id;

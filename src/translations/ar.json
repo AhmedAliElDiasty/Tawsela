@@ -26,5 +26,11 @@
   "gender": "الجنس",
   "rating": "التقييم",
   "busy?": "مشغول؟",
-  "transferFees": "الأجرة"
+  "transferFees": "الأجرة",
+  "language": "اللغة",
+  "choose-language": "اختر اللغة",
+  "switch-on": "العربية",
+  "switch-off": "English",
+  "update-portfolio": "تحديث الملف",
+  "update-portfile": "تحديث"
 }

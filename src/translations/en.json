@@ -26,5 +26,11 @@
   "gender": "Gender",
   "rating": "Rating",
   "busy?": "Busy?",
-  "transferFees": "Transfer fees"
+  "transferFees": "Transfer fees",
+  "language": "Language",
+  "choose-language": "Choose Language",
+  "switch-on": "العربية",
+  "switch-off": "English",
+  "update-portfolio": "Update portfolio",
+  "update-portfile": "Update"
 }

@@ -21,5 +21,10 @@
   "home": "Home",
   "favourite-title": "Favourite",
   "more-title": "More",
-  "providerDetailsTitle": "Provider details"
+  "providerDetailsTitle": "Provider details",
+  "name": "Name",
+  "gender": "Gender",
+  "rating": "Rating",
+  "busy?": "Busy?",
+  "transferFees": "Transfer fees"
 }

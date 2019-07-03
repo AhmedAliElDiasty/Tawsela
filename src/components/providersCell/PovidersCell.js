@@ -14,6 +14,7 @@ import {
 import { API_ENDPOINT_TAWSELA } from '../../utils/Config';
 import axios from 'axios';
 import I18n from 'react-native-i18n';
+import { TouchableWithoutFeedback } from 'react-native-gesture-handler';
 
 class ProvidersCell extends Component {
   componentDidMount() {}
@@ -107,7 +108,15 @@ class ProvidersCell extends Component {
         spaceBetween
         marginHorizontal={7}
         marginVertical={3}
-        onPress={() => AppNavigation.push('providerDetails')}
+        onPress={() =>
+          AppNavigation.push({
+            name: 'providerDetails',
+            passProps: {
+              data: data,
+              id:this.props.userId
+            },
+          })
+        }
       >
         <AppView row>
           <AppView centerY>
@@ -145,6 +154,7 @@ class ProvidersCell extends Component {
           <AppView>
             <AppText>{transferFees}</AppText>
           </AppView>
+          <TouchableWithoutFeedback>
           <AppView
             // marginTop={20}
             borderRadius={50}
@@ -163,18 +173,20 @@ class ProvidersCell extends Component {
                 />
               </AppView>
             ) : (
-              <AppIcon
-                name="heart"
-                type="oct"
-                size={10}
-                color={this.props.data.inFavourites ? 'white' : '#777'}
-                onPress={() => {
-                  this.favouriteToggle(id);
-                }}
-              />
+                <AppIcon
+                  name="heart"
+                  type="oct"
+                  size={10}
+                  color={this.props.data.inFavourites ? 'white' : '#777'}
+                  onPress={() => {
+                    this.favouriteToggle(id);
+                  }}
+                />                
             )}
           </AppView>
+          </TouchableWithoutFeedback>
         </AppView>
+        
       </AppView>
     );
   }

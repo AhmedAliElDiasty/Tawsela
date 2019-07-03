@@ -21,5 +21,10 @@
   "home": "الرئيسية",
   "favourite-title": "المفضلة",
   "more-title": "المزيد",
-  "providerDetailsTitle": "تفاصيل مقدم الخدمة"
+  "providerDetailsTitle": "تفاصيل مقدم الخدمة",
+  "name": "الإسم",
+  "gender": "الجنس",
+  "rating": "التقييم",
+  "busy?": "مشغول؟",
+  "transferFees": "الأجرة"
 }

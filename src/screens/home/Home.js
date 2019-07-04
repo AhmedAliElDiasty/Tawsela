@@ -28,13 +28,14 @@ class Home extends Component {
     isVisible: true,
   };
 
+
   componentDidAppear = () => {
     this.props.refreshList('providersList');
   };
   
   render() {
     console.log('State', this.state.data);
-    const { currentUser } = this.props;
+    const { currentUser } = this.props;    
 
     return (
       <AppView flex stretch>
@@ -60,7 +61,7 @@ class Home extends Component {
             }}
             rowRenderer={data => (
               <ProvidersCell
-                userId={currentUser.user._id}
+                userId={currentUser._id}
                 data={data}
               />
             )}

@@ -30,6 +30,8 @@ class Favourite extends Component{
 
   render(){
     const {currentUser} = this.props
+    console.log("CurrentUserrrr",currentUser._id);
+    
     return(
       <AppView flex stretch>
         <AppHeader title={I18n.t('favourite-title')} hideBack/>
@@ -37,7 +39,7 @@ class Favourite extends Component{
           idPathInData="provider.user._id"
           refreshControl={this.props.favouriteList}
           apiRequest={{
-            url: `${API_ENDPOINT_TAWSELA}clients/${currentUser.user._id}/get-all-favorites`,
+            url: `${API_ENDPOINT_TAWSELA}clients/${currentUser._id}/get-all-favorites`,
 
             responseResolver: response => {
               this.setState({
@@ -57,7 +59,7 @@ class Favourite extends Component{
           rowRenderer={data => (
             <FavouriteCell
               onChangeFavourite={this.onChangeFavourite}
-              userId={currentUser.user._id}
+              userId={currentUser._id}
               data={data}
             />
           )}

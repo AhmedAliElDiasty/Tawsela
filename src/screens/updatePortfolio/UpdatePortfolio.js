@@ -62,8 +62,9 @@ class UpdatePortfolio extends Component {
       />
       <AppView stretch center>
         <AvatarPicker
+          initialUriValue={this.props.currentUser.profileImage}
           onChange={uri => {
-            setFieldValue('profileImg', uri);
+            setFieldValue('profileImage', uri);
           }}
         />
       </AppView>
@@ -80,15 +81,14 @@ class UpdatePortfolio extends Component {
     </AppView>
   );
   render() {
-    const { user } = this.props.currentUser;
+    const { currentUser } = this.props;
     return (
       <AppView flex stretch center>
         <AppForm
           schema={{
-            profileImg: user.profileImage,
-            nameAr: user.name.ar,
-            nameEn: user.name.en,
-            email: user.email,
+            nameAr: currentUser.name.ar,
+            nameEn: currentUser.name.en,
+            email: currentUser.email,
             password: '',
           }}
           validationSchema={validationSchema}

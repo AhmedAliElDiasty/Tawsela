@@ -211,7 +211,7 @@ export function updatePortfolio(values, setSubmitting) {
     if (
       values.profileImage &&
       values.profileImage !==
-        getState().auth.currentUser.user.profileImage
+        getState().auth.currentUser.profileImage
     ) {
       data.append('profileImage', {
         uri: values.profileImage,
@@ -222,9 +222,11 @@ export function updatePortfolio(values, setSubmitting) {
 
     try {
         console.log("Data========>>>>",data);
+        console.log('=======', values.profileImage);
+        
         
       const response = await axios.patch(
-        `${API_ENDPOINT_GATEWAY}user/${getState().auth.currentUser.user._id}`,
+        `${API_ENDPOINT_GATEWAY}user/${getState().auth.currentUser._id}`,
         data,
         {
           headers: {
@@ -232,7 +234,7 @@ export function updatePortfolio(values, setSubmitting) {
           },
         },
       );
-      console.log('Request   ',`${API_ENDPOINT_GATEWAY}user/${getState().auth.currentUser.user._id}`);
+      console.log('Request   ',`${API_ENDPOINT_GATEWAY}user/${getState().auth.currentUser._id}`);
       
       console.log("Response",response.data);
       AsyncStorage.setItem('@CurrentUser', JSON.stringify(response.data));

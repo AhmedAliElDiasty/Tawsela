@@ -24,13 +24,13 @@ class Favourite extends Component{
   componentDidAppear = () => {
     this.props.refreshList('favouriteList');
   };
-  onChangeFavourite = () => {
-    this.props.refreshList('favouriteList');
-  };
+  // onChangeFavourite = () => {
+  //   this.props.refreshList('favouriteList');
+  // };
 
   render(){
     const {currentUser} = this.props
-    console.log("CurrentUserrrr",currentUser._id);
+    console.log("CurrentUserrrr",currentUser);
     
     return(
       <AppView flex stretch>
@@ -39,7 +39,7 @@ class Favourite extends Component{
           idPathInData="provider.user._id"
           refreshControl={this.props.favouriteList}
           apiRequest={{
-            url: `${API_ENDPOINT_TAWSELA}clients/${currentUser._id}/get-all-favorites`,
+            url: `${API_ENDPOINT_TAWSELA}clients/${currentUser.user._id}/get-all-favorites`,
 
             responseResolver: response => {
               this.setState({
@@ -52,14 +52,14 @@ class Favourite extends Component{
             },
             onError: error => {
               console.log('error', error);
-              console.log(`${API_ENDPOINT_TAWSELA}clients/${currentUser._id}/get-all-favorites`);
+              console.log(`${API_ENDPOINT_TAWSELA}clients/${currentUser.user._id}/get-all-favorites`);
               
             },
           }}
           rowRenderer={data => (
             <FavouriteCell
               onChangeFavourite={this.onChangeFavourite}
-              userId={currentUser._id}
+              userId={currentUser.user._id}
               data={data}
             />
           )}

@@ -32,5 +32,9 @@
   "switch-on": "العربية",
   "switch-off": "English",
   "update-portfolio": "تحديث الملف",
-  "update-portfile": "تحديث"
+  "update-portfile": "تحديث",
+  "log-out": "تسجيل الخروج",
+  "log-out-text": "هل أنت متأكد من الخروج",
+  "log-out-confirm": "خروج",
+  "log-out-cancel": "إلغاء"
 }

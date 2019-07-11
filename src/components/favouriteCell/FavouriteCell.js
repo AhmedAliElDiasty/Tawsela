@@ -20,37 +20,38 @@ class ProvidersCell extends Component {
     loading: false,
   };
   favouriteToggle(id) {
-    if (!this.props.data.provider.inFavourites) {
-      this.onAddToFavorite(id);
-    } else {
-      this.props.favorite ? this.onDelete(id) : this.onDeleteFavourite(id);
-    }
+    // if (!this.props.data.provider.inFavourites) {
+    //   this.onAddToFavorite(id);
+    // } else {
+    //   this.props.favorite ? this.onDelete(id) : this.onDeleteFavourite(id);
+    // }
+    this.onDeleteFavourite(id);
   }
 
-  onAddToFavorite = async id => {
-    const clientId = this.props.userId;
-    try {
-      this.setState({ loading: true });
-      const response = await axios.post(
-        `${API_ENDPOINT_TAWSELA}clients/${clientId}/addTofavorite`,
-        {
-          provider: id,
-        },
-      );
-      this.props.updateItemInList(this.props.data.provider.user._id, {
-        inFavourites: true,
-      });
-      this.props.onChangeFavourite();
-      this.setState({ loading: false });
-      showSuccess(I18n.t('favourite-add'));
-    } catch (error) {
-      // showError(String(error[3]));
-      this.setState({ loading: false });
-      console.log('Error-----', error);
+  // onAddToFavorite = async id => {
+  //   const clientId = this.props.userId;
+  //   try {
+  //     this.setState({ loading: true });
+  //     const response = await axios.post(
+  //       `${API_ENDPOINT_TAWSELA}clients/${clientId}/addTofavorite`,
+  //       {
+  //         provider: id,
+  //       },
+  //     );
+  //     this.props.updateItemInList(this.props.data.provider.user._id, {
+  //       inFavourites: true,
+  //     });
+  //     this.props.onChangeFavourite();
+  //     this.setState({ loading: false });
+  //     showSuccess(I18n.t('favourite-add'));
+  //   } catch (error) {
+  //     // showError(String(error[3]));
+  //     this.setState({ loading: false });
+  //     console.log('Error-----', error);
 
-      console.log('errorOnAddFavourite', JSON.parse(JSON.stringify(error)));
-    }
-  };
+  //     console.log('errorOnAddFavourite', JSON.parse(JSON.stringify(error)));
+  //   }
+  // };
   onDeleteFavourite = async id => {
     const clientId = this.props.userId;
     try {
@@ -58,9 +59,7 @@ class ProvidersCell extends Component {
       const response = await axios.delete(
         `${API_ENDPOINT_TAWSELA}clients/${clientId}/providers/${id}/removefavorite`,
       );
-      this.props.updateItemInList(this.props.data.provider.user._id, {
-        inFavourites: false,
-      });
+      this.props.deleteItemFormList(this.props.data.provider.user._id, );
       this.props.onChangeFavourite();
       this.setState({ loading: false });
       showSuccess(I18n.t('favourite-remove'));
@@ -72,26 +71,7 @@ class ProvidersCell extends Component {
       console.log('ErrorOnDeleteFavourite', JSON.parse(JSON.stringify(error)));
     }
   };
-  onDelete = async id => {
-    const clientId = this.props.userId;
-    try {
-      this.setState({ loading: true });
-      const response = await axios.delete(
-        `${API_ENDPOINT_TAWSELA}clients/${clientId}/providers/${id}/removefavorite`,
-      );
-      this.props.updateItemInList(this.props.data.provider.user._id, {}, v => ({
-        product: { ...v.product, inFavourites: false },
-      }));
-      this.props.onChangeFavourite();
-      showSuccess(I18n.t('favourite-remove'));
-      this.setState({ loading: false });
-    } catch (error) {
-      // showError(String(error[3]));
-      console.log('error', error);
-      this.setState({ loading: false });
-      console.log('ErrorOnDelete', JSON.parse(JSON.stringify(error)));
-    }
-  };
+ 
   render() {
     const { data, rtl } = this.props;
     const image = data.provider.user.profileImage;

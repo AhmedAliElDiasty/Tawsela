@@ -256,24 +256,14 @@ export function updatePortfolio(values, setSubmitting) {
   };
 }
   
-//   export const logout = () => async (dispatch, getState) => {
-//     const userId = store.getState().auth.currentUser.user.id;
-//     getClient()
-//       .record.getRecord(`fsa-dsProviders/${userId}`)
-//       .unsubscribe();
+  export const logout = () => async (dispatch, getState) => {
   
-//     setTimeout(() => {
-//       getClient()
-//         .record.getRecord(`fsa-dsProviders/${userId}`)
-//         .discard();
-//     }, 200);
-  
-//     await AsyncStorage.setItem('@CurrentUser', '');
-//     AppNavigation.setStackRoot({
-//       name: 'signIn',
-//     });
-//     setTimeout(() => dispatch({ type: LOGOUT }), 1500);
-//   };
+    await AsyncStorage.setItem('@CurrentUser', '');
+    AppNavigation.setStackRoot({
+      name: 'login',
+    });
+    setTimeout(() => dispatch({ type: LOGOUT }), 1500);
+  };
   
 
   

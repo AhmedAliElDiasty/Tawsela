@@ -30,7 +30,7 @@ class ProvidersCell extends Component {
   }
 
   onAddToFavorite = async id => {
-    const clientId = this.props.userId;
+    const clientId = this.props.currentUser.user._id;
     try {
       this.setState({ loading: true });
       const response = await axios.post(
@@ -47,13 +47,13 @@ class ProvidersCell extends Component {
     } catch (error) {
       // showError(String(error[3]));
       this.setState({ loading: false });
-      console.log('Error-----', error);
+      console.log('Error-----',  `${API_ENDPOINT_TAWSELA}clients/${clientId}/addTofavorite`);
 
       console.log('errorOnAddFavourite', JSON.parse(JSON.stringify(error)));
     }
   };
   onDeleteFavourite = async id => {
-    const clientId = this.props.userId;
+    const clientId = this.props.currentUser.user._id;
     try {
       this.setState({ loading: true });
       const response = await axios.delete(
@@ -73,7 +73,7 @@ class ProvidersCell extends Component {
     }
   };
   onDelete = async id => {
-    const clientId = this.props.userId;
+    const clientId = this.props.currentUser.user._id;
     const { data } = this.props;
     try {
       this.setState({ loading: true });
@@ -121,7 +121,7 @@ class ProvidersCell extends Component {
         <AppView row>
           <AppView centerY>
             <AppImage
-              backgroundColor="pink"
+              source={{uri:data.identityCard}}
               equalSize={20}
               resizeMode="contain"
               borderRadius={50}

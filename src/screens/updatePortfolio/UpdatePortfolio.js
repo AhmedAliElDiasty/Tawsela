@@ -81,14 +81,14 @@ class UpdatePortfolio extends Component {
     </AppView>
   );
   render() {
-    const { currentUser } = this.props;
+    const { currentUser } = this.props;    
     return (
       <AppView flex stretch center>
         <AppForm
           schema={{
-            nameAr: currentUser.name.ar,
-            nameEn: currentUser.name.en,
-            email: currentUser.email,
+            nameAr: currentUser.user.name.ar,
+            nameEn: currentUser.user.name.en,
+            email: currentUser.user.email,
             password: '',
           }}
           validationSchema={validationSchema}

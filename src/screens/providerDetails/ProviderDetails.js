@@ -141,7 +141,7 @@ class ProviderDetails extends Component {
         <AppHeader title={I18n.t('providerDetailsTitle')} />
         <AppView stretch height={35}>
           <Image
-            source={img}
+            source={{uri:data.identityCard}}
             style={[styles.absolute]}
             ref={img => {
               this.backgroundImage = img;
@@ -155,7 +155,7 @@ class ProviderDetails extends Component {
             style={styles.absolute}
           />
           <AppView stretch flex center>
-            <AppImage source={img} borderRadius={50} equalSize={40} />
+            <AppImage source={{uri:data.identityCard}}  circleRadius={30}/>
           </AppView>
         </AppView>
         {this.renderCell(`${I18n.t('name')}:`, name)}

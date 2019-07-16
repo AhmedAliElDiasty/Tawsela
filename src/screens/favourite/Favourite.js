@@ -36,6 +36,7 @@ class Favourite extends Component{
       <AppView flex stretch>
         <AppHeader title={I18n.t('favourite-title')} hideBack/>
         <AppList
+          flatlist
           idPathInData="provider.user._id"
           refreshControl={this.props.favouriteList}
           apiRequest={{
@@ -45,13 +46,14 @@ class Favourite extends Component{
               this.setState({
                 data: response.data.data,
               });
+              console.log("Favourite Data",response.data.data);
               
               return {
                 data: response.data.data,
               };
             },
             onError: error => {
-              console.log('error', error);
+              console.log('errorInFavourite', error);
               console.log(`${API_ENDPOINT_TAWSELA}clients/${currentUser.user._id}/get-all-favorites`);
               
             },

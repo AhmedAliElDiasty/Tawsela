@@ -15,51 +15,22 @@ import axios from 'axios';
 import I18n from 'react-native-i18n';
 
 class ProvidersCell extends Component {
-  componentDidMount() {}
+  componentDidMount() {
+    console.log('this.props',this.props);
+    
+  }
   state = {
     loading: false,
   };
-  favouriteToggle(id) {
-    // if (!this.props.data.provider.inFavourites) {
-    //   this.onAddToFavorite(id);
-    // } else {
-    //   this.props.favorite ? this.onDelete(id) : this.onDeleteFavourite(id);
-    // }
-    this.onDeleteFavourite(id);
-  }
-
-  // onAddToFavorite = async id => {
-  //   const clientId = this.props.userId;
-  //   try {
-  //     this.setState({ loading: true });
-  //     const response = await axios.post(
-  //       `${API_ENDPOINT_TAWSELA}clients/${clientId}/addTofavorite`,
-  //       {
-  //         provider: id,
-  //       },
-  //     );
-  //     this.props.updateItemInList(this.props.data.provider.user._id, {
-  //       inFavourites: true,
-  //     });
-  //     this.props.onChangeFavourite();
-  //     this.setState({ loading: false });
-  //     showSuccess(I18n.t('favourite-add'));
-  //   } catch (error) {
-  //     // showError(String(error[3]));
-  //     this.setState({ loading: false });
-  //     console.log('Error-----', error);
-
-  //     console.log('errorOnAddFavourite', JSON.parse(JSON.stringify(error)));
-  //   }
-  // };
   onDeleteFavourite = async id => {
-    const clientId = this.props.userId;
+    const clientId = this.props.currentUser.user._id;
+    
     try {
       this.setState({ loading: true });
       const response = await axios.delete(
         `${API_ENDPOINT_TAWSELA}clients/${clientId}/providers/${id}/removefavorite`,
       );
-      this.props.deleteItemFormList(this.props.data.provider.user._id, );
+      this.props.removeItemFromList(id);
       this.props.onChangeFavourite();
       this.setState({ loading: false });
       showSuccess(I18n.t('favourite-remove'));
@@ -67,6 +38,8 @@ class ProvidersCell extends Component {
       this.setState({ loading: false });
       // showError(String(error[3]));
       console.log('error', error);
+      console.log( `${API_ENDPOINT_TAWSELA}clients/${clientId}/providers/${id}/removefavorite`);
+      
 
       console.log('ErrorOnDeleteFavourite', JSON.parse(JSON.stringify(error)));
     }
@@ -88,7 +61,7 @@ class ProvidersCell extends Component {
         <AppView row>
           <AppView centerY>
             <AppImage
-              backgroundColor="pink"
+              source={{uri:image}}
               equalSize={20}
               resizeMode="contain"
               borderRadius={50}
@@ -143,7 +116,7 @@ class ProvidersCell extends Component {
                 size={10}
                 color={inFavourites ? 'white' : '#777'}
                 onPress={() => {
-                  this.favouriteToggle(id);
+                  this.onDeleteFavourite(id);
                 }}
               />
             )}
@@ -158,4 +131,4 @@ const mapStateToProps = state => ({
   rtl: state.lang.rtl,
   currentUser: state.auth.currentUser,
 });
-export default connect()(ProvidersCell);
+export default connect(mapStateToProps)(ProvidersCell);

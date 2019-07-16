@@ -51,6 +51,8 @@ class Home extends Component {
                 this.setState({
                   data: response.data.data,
                 });
+                console.log("response",response);
+                
                 return {
                   data: response.data.data,
                 };

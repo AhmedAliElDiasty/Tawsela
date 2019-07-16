@@ -36,5 +36,7 @@
   "log-out": "تسجيل الخروج",
   "log-out-text": "هل أنت متأكد من الخروج",
   "log-out-confirm": "خروج",
-  "log-out-cancel": "إلغاء"
+  "log-out-cancel": "إلغاء",
+  "location": "العنوان",
+  "ui-noResultsFound": "لا يوجد نتائج"
 }

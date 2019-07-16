@@ -36,5 +36,7 @@
   "log-out": "Sign out",
   "log-out-text": "Are you want to log out",
   "log-out-confirm": "yes",
-  "log-out-cancel": "cancel"
+  "log-out-cancel": "cancel",
+  "location": "location",
+  "ui-noResultsFound": "No Result"
 }

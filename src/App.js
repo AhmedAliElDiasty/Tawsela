@@ -12,6 +12,7 @@ import {
 import { initLang, setLang } from './actions/lang';
 import colors from './common/defaults/colors';
 import { autoLogin } from './actions/authAction';
+import { API_ENDPOINT_TAWSELA } from '../android/app/src/utils/Config';
 
 
 
@@ -83,25 +84,44 @@ export const startApp = () => {
         console.log('exist',exist);
         
         if (exist) {
+          // const {currentUser} = store.getState().auth
+          // try{
+          //   const response = await axios.post(
+          //     `${API_ENDPOINT_TAWSELA}clients/${currentUser._id}`,
+          //     {
+          //       headers:{
+          //         Authorization: `Bearer ${currentUser.token}`
+          //       }
+          //     }
+          //   );
             nv.init('MAIN_STACK', {
-                bottomTabs: [
-                  {
-                    screen: 'home',
-                    label: 'Home',
-                    icon: require('./assets/images/home.png'),
-                  },
-                  {
-                    screen: 'favourite',
-                    label: 'favourite',
-                    icon: require('./assets/images/favourite.png'),
-                  },
-                  {
-                    screen: 'more',
-                    label: 'More',
-                    icon: require('./assets/images/more.png'),
-                  },
-                ],
-              });
+              bottomTabs: [
+                {
+                  screen: 'home',
+                  label: 'Home',
+                  icon: require('./assets/images/home.png'),
+                },
+                {
+                  screen: 'favourite',
+                  label: 'favourite',
+                  icon: require('./assets/images/favourite.png'),
+                },
+                {
+                  screen: 'more',
+                  label: 'More',
+                  icon: require('./assets/images/more.png'),
+                },
+              ],
+            });
+          // }catch(error){
+          //   console.log(JSON.parse(JSON.stringify(error)));
+          //   console.log("EEEEE",store.getState().auth.currentUser);
+            
+          // //   nv.init('MAIN_STACK', {
+          // //     name: 'completeData',
+          // // });
+            
+          //   }
         } else {
             nv.init('MAIN_STACK', {
                 name: 'login',

@@ -8,6 +8,8 @@ import axios from 'axios'
 import { showError } from '../common/utils/localNotifications';
 import { AppNavigation } from '../common';
 import {AsyncStorage} from 'react-native'
+import Navigation from '../common/Navigation';
+import I18n from 'react-native-i18n'
 
 
 export const setCurrentUser = data => async (dispatch, getState) => {
@@ -33,13 +35,14 @@ export const setCurrentUser = data => async (dispatch, getState) => {
         AsyncStorage.setItem('@CurrentUser', JSON.stringify(response.data));
 
       dispatch({ type: LOGIN_SUCCESS, payload: response.data });
+      clientCheck(response.data, setSubmitting)(dispatch, getState);
   
-      AppNavigation.setStackRoot({
-        name: 'home',
-        passProps: {
-          userData: response.data,
-        },
-      });
+      // AppNavigation.setStackRoot({
+      //   name: 'home',
+      //   passProps: {
+      //     userData: response.data,
+      //   },
+      // });
 
     } catch (error) {        
       setSubmitting(false);
@@ -90,17 +93,12 @@ export const setCurrentUser = data => async (dispatch, getState) => {
   
         dispatch({ type: LOGIN_SUCCESS, payload: response.data });
   
-        AppNavigation.setStackRoot({
-            name: 'completeData',
-            passProps: {
-              userData: response.data,
-            },
-          });
+        clientCheck(response.data, setSubmitting)(dispatch, getState);
 
       } catch (error) {
-          console.log('error',error);
+          console.log('error',JSON.parse(JSON.stringify(error)));
           
-        // showError(error[1].message);
+        // showError();
         setSubmitting(false);
       }
     };
@@ -119,8 +117,8 @@ export const autoLogin = () => async (dispatch, getState) => {
   
       console.log('auto login');
       console.log(userData);
-  
-      initDeepStream(userData.accessToken, 'PROVIDER', userData.id);
+
+      initDeepStream(userData.accessToken, 'CLIENT', userData.id);
       dispatch({
         type: LOGIN_SUCCESS,
         payload: userData,
@@ -265,5 +263,59 @@ export function updatePortfolio(values, setSubmitting) {
     setTimeout(() => dispatch({ type: LOGOUT }), 1500);
   };
   
+
+  export const clientCheck = (data, setSubmitting) => async (
+    dispatch,
+    getState,
+  ) => {
+    try {
+      const response = await axios.get(
+        `${API_ENDPOINT_TAWSELA}clients/${data.user._id}`,
+        // {
+        //   headers: {
+        //     Authorization: data.token,
+        //   },
+        // },
+      );
+      if (response) {
+        AsyncStorage.setItem('@CurrentUser', JSON.stringify(data));
+  
+        dispatch({
+          type: LOGIN_SUCCESS,
+          payload: data,
+        });
+  
+        AppNavigation.setStackRoot({
+          name: 'home',
+          passProps: {
+            userData: response.data,
+          },
+        });
+      }
+    } catch (error) {
+      if (
+        error.response.status === 404 
+      ) {
+        AppNavigation.setStackRoot({
+          name: 'completeData',
+          passProps: {
+            userData: data,
+          },
+        });
+      } else {
+        console.log("error",JSON.parse(JSON.stringify(error)));
+        console.log(`${API_ENDPOINT_TAWSELA}clients/${data.user._id}`);
+        
+        
+        // showError(I18n.t('ui-error'));
+        dispatch({
+          type: LOGIN_FAIL,
+          payload: I18n.t('ui-error'),
+        });
+      }
+  
+      setSubmitting(false);
+    }
+  };
 
   

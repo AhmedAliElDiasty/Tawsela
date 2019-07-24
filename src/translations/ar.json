@@ -38,5 +38,6 @@
   "log-out-confirm": "خروج",
   "log-out-cancel": "إلغاء",
   "location": "العنوان",
-  "ui-noResultsFound": "لا يوجد نتائج"
+  "ui-noResultsFound": "لا يوجد نتائج",
+  "no-favourite-providers": "لا يوجد مقدمين خدمة مفضلين"
 }

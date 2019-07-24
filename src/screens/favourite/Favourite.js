@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import I18n from 'react-native-i18n';
 import {connect} from 'react-redux'
 import { AppView, AppList } from '../../common';
-import { AppHeader, CustomBottomTabs, FavouriteCell } from '../../components';
+import { AppHeader, CustomBottomTabs, FavouriteCell, EmptyContent } from '../../components';
 import { API_ENDPOINT_TAWSELA } from '../../utils/Config';
 import { refreshList } from '../../actions/list';
 import { bindActionCreators } from 'redux';
@@ -65,6 +65,12 @@ class Favourite extends Component{
               data={data}
             />
           )}
+          noResultsComponent={
+            <EmptyContent
+            componentId={this.props.componentId}
+            result={I18n.t("no-favourite-providers")}
+          />
+          }
           rowHeight={61.5}
         />
         <CustomBottomTabs componentId={this.props.componentId} />

@@ -18,7 +18,7 @@ import { getBottomSpace } from '../utils/iphoneHelper';
 
 const BAR_HEIGHT_ANDROID = 56;
 const BAR_HEIGHT_IOS = 49;
-const barHeight = Platform.OS === 'ios' ? BAR_HEIGHT_IOS : BAR_HEIGHT_ANDROID;
+export const barHeight = Platform.OS === 'ios' ? BAR_HEIGHT_IOS : BAR_HEIGHT_ANDROID;
 const bc = 'white';
 const tabsAr = [
   { name: 'home', type: 'font-awesome', index: 0, label: 'الرئيسية' },

@@ -11,7 +11,7 @@ import {
   getColors,
 } from '../../common';
 
-const APPBAR_HEIGHT = Platform.OS === 'ios' ? 54 : 56;
+export const APPBAR_HEIGHT = Platform.OS === 'ios' ? 54 : 56;
 
 export default class Header extends Component {
   static propTypes = {

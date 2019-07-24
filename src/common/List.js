@@ -16,6 +16,7 @@ import Button from './Button';
 import {
   expResponsiveHeight,
   moderateScale,
+  windowHeight,
 } from './utils/responsiveDimensions';
 import { getThemeColor } from './utils/colors';
 import { getTheme } from './Theme';
@@ -27,6 +28,8 @@ import {
   paddingStyles,
 } from './Base';
 import Network from './Base/Network';
+import { APPBAR_HEIGHT } from '../components/header/Header';
+import { barHeight } from '../components/CustomBottomTabs';
 
 class List extends Network {
   static propTypes = {
@@ -181,30 +184,43 @@ class List extends Network {
   };
 
   renderFooter = () => {
-    if (this.state.refreshing) return null;
+    const { listHeight,withBottomNav} = this.props;
+    const height = withBottomNav
+      ? windowHeight - barHeight - APPBAR_HEIGHT
+      : windowHeight - APPBAR_HEIGHT;
 
-    if (this.state.loading || !this.state.firstFetchDone) {
-      return (
-        <View centerX p={5}>
-          <Indicator color={this.props.indicatorColor} size={12} />
-        </View>
-      );
-    }
+    if (this.state.refreshing || this.loading) return null;
 
     if (this.state.errorLabel) {
       return (
-        <View centerX p={10}>
+        <View
+          centerX
+          p={10}
+          style={
+            this.props.horizontal && this.props.rtl
+              ? {
+                  transform: [
+                    {
+                      scale: -1
+                    }
+                  ]
+                }
+              : listHeight
+              ? {height: listHeight }
+              : { height }
+          }
+        >
           <Text bold color={this.props.errorLabelColor}>
             {this.state.errorLabel}
           </Text>
           <Button
-            title={I18n.t('ui-retry')}
+            title={I18n.t("ui-retry")}
             backgroundColor={this.props.retryButtonBackgroundColor}
             color={this.props.retryButtoncolor}
             mv={8}
             onPress={() => {
               this.setState({
-                errorLabel: '',
+                errorLabel: ""
               });
               this.reload();
             }}
@@ -216,14 +232,47 @@ class List extends Network {
       );
     }
 
-    if (this.state.dataProvider._data.length === 0) {
+    if (
+      this.state.dataProvider._data.length === 0 &&
+      !this.state.loading &&
+      this.state.firstFetchDone
+    ) {
       if (this.props.noResultsComponent) {
-        return React.cloneElement(this.props.noResultsComponent);
+        return React.cloneElement(this.props.noResultsComponent, {
+          style:
+            this.props.horizontal && this.props.rtl
+              ? {
+                  transform: [
+                    {
+                      scale: -1
+                    }
+                  ]
+                }
+              : listHeight
+              ? {height: listHeight }
+              : { height }
+        });
       }
       return (
-        <View centerX p={15}>
+        <View
+          center
+          p={15}
+          style={
+            this.props.horizontal && this.props.rtl
+              ? {
+                  transform: [
+                    {
+                      scale: -1
+                    }
+                  ]
+                }
+              : listHeight
+              ? {height: listHeight }
+              : { height }
+          }
+        >
           <Text bold color={this.props.noResultsLabelColor}>
-            {this.props.noResultsLabel || I18n.t('ui-noResultsFound')}
+            {this.props.noResultsLabel || I18n.t("ui-noResultsFound")}
           </Text>
         </View>
       );

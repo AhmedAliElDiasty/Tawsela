@@ -38,5 +38,6 @@
   "log-out-confirm": "yes",
   "log-out-cancel": "cancel",
   "location": "location",
-  "ui-noResultsFound": "No Result"
+  "ui-noResultsFound": "No Result",
+  "no-favourite-providers": "No providers in favourite"
 }

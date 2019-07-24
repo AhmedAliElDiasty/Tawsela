@@ -45,6 +45,7 @@ class More extends Component {
           onPress = {()=>{
             AppNavigation.push('updatePortfolio')
           }}
+          centerY
         >
           <AppText size={8}>{I18n.t('update-portfolio')}</AppText>
         </AppView>
@@ -55,6 +56,7 @@ class More extends Component {
           borderBottomWidth={0.5}
           borderBottomColor="grey"
           onPress = {this.logOutButton}
+          centerY
         >
           <AppText size={8}>{I18n.t('log-out')}</AppText>
         </AppView>

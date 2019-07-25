@@ -47,7 +47,10 @@ class ProvidersCell extends Component {
     } catch (error) {
       // showError(String(error[3]));
       this.setState({ loading: false });
-      console.log('Error-----',  `${API_ENDPOINT_TAWSELA}clients/${clientId}/addTofavorite`);
+      console.log(
+        'Error-----',
+        `${API_ENDPOINT_TAWSELA}clients/${clientId}/addTofavorite`,
+      );
 
       console.log('errorOnAddFavourite', JSON.parse(JSON.stringify(error)));
     }
@@ -103,17 +106,21 @@ class ProvidersCell extends Component {
     const rating = data.rating;
     return (
       <AppView
+        elevation={2}
+        // borderWidth={1}
+        borderColor='grey'
         row
         stretch
         spaceBetween
         marginHorizontal={7}
+        paddingHorizontal={2}
         marginVertical={3}
         onPress={() =>
           AppNavigation.push({
             name: 'providerDetails',
             passProps: {
               data: data,
-              id:this.props.userId
+              id: this.props.currentUser.user._id,
             },
           })
         }
@@ -121,7 +128,7 @@ class ProvidersCell extends Component {
         <AppView row>
           <AppView centerY>
             <AppImage
-              source={{uri:data.identityCard}}
+              source={{ uri: data.identityCard }}
               equalSize={20}
               resizeMode="contain"
               borderRadius={50}
@@ -151,28 +158,25 @@ class ProvidersCell extends Component {
         </AppView>
 
         <AppView centerX>
-          <AppView>
-            <AppText>{transferFees}</AppText>
-          </AppView>
-          <TouchableWithoutFeedback>
-          <AppView
-            // marginTop={20}
-            borderRadius={50}
-            paddingVertical={2.5}
-            paddingHorizontal={4}
-            backgroundColor={
-              this.props.data.inFavourites ? 'primary' : '#EBEAEA'
-            }
-            // style={{ position: 'absolute', bottom: 7, right: 12 }}
-          >
-            {this.state.loading ? (
-              <AppView paddingVertical={1.5}>
-                <AppSpinner
-                  color={this.props.data.inFavourites ? 'white' : 'primary'}
-                  size={6.1}
-                />
-              </AppView>
-            ) : (
+          <TouchableWithoutFeedback style={{marginBottom:5}}>
+            <AppView
+              // marginTop={20}
+              borderRadius={50}
+              paddingVertical={2.5}
+              paddingHorizontal={4}
+              backgroundColor={
+                this.props.data.inFavourites ? 'primary' : '#EBEAEA'
+              }
+              // style={{ position: 'absolute', bottom: 7, right: 12 }}
+            >
+              {this.state.loading ? (
+                <AppView paddingVertical={1.5}>
+                  <AppSpinner
+                    color={this.props.data.inFavourites ? 'white' : 'primary'}
+                    size={6.1}
+                  />
+                </AppView>
+              ) : (
                 <AppIcon
                   name="heart"
                   type="oct"
@@ -181,12 +185,22 @@ class ProvidersCell extends Component {
                   onPress={() => {
                     this.favouriteToggle(id);
                   }}
-                />                
-            )}
-          </AppView>
+                />
+              )}
+            </AppView>
+          </TouchableWithoutFeedback>
+          <TouchableWithoutFeedback>
+            <AppView
+              paddingHorizontal={2}
+              paddingVertical={1.5}
+              borderColor="primary"
+              borderWidth={1}
+              borderRadius={5}
+            >
+              <AppText color="primary">Make order</AppText>
+            </AppView>
           </TouchableWithoutFeedback>
         </AppView>
-        
       </AppView>
     );
   }
